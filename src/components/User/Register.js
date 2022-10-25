@@ -1,7 +1,12 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
+  const { registerAccount } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -9,6 +14,18 @@ const Register = () => {
     const photoURL = form.photoURL.value;
     const email = form.email.value;
     const password = form.password.value;
+
+    registerAccount(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate("/login");
+
+        Swal.fire("Account Register Success!!", "Please Login");
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
     console.log(email, name, photoURL, password);
   };
@@ -43,7 +60,6 @@ const Register = () => {
             id="photoURL"
             placeholder="photoURL"
             className="w-full px-4 py-3 border border-blue-100 rounded-md focus:outline-none focus:shadow-md focus:bg-blue-50"
-            required
           />
         </div>
         <div className="space-y-1 text-sm">
@@ -115,10 +131,10 @@ const Register = () => {
         Don't have an account?
         <Link
           rel="noopener noreferrer"
-          href="#"
+          to="/login"
           className="underline text-blue-900"
         >
-          Register
+          Login
         </Link>
       </p>
     </div>
