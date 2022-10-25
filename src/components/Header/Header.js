@@ -67,13 +67,14 @@ const Header = () => {
               <FaSun className="text-gray-900" />
             )}
           </button>
-          <button
-            className={`self-center text-lg flex items-center px-4 py-2 
-         
+          <Link to="/login">
+            <button
+              className={`self-center text-lg flex items-center px-4 py-2 
          text-blue-500 rounded bg-white border`}
-          >
-            Log in <FaSignInAlt className="ml-2" />
-          </button>
+            >
+              Log in <FaSignInAlt className="ml-2" />
+            </button>
+          </Link>
         </div>
         <button className="p-4 lg:hidden">
           <svg
