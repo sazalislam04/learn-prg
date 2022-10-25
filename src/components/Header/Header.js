@@ -1,12 +1,26 @@
 import React, { useContext, useState } from "react";
-import { FaGraduationCap, FaMoon, FaSignInAlt, FaSun } from "react-icons/fa";
+import {
+  FaGraduationCap,
+  FaMoon,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaSun,
+} from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Header = () => {
   const [theme, setTheme] = useState(false);
 
-  const { user } = useContext(AuthContext);
+  const { user, userLogOut } = useContext(AuthContext);
+
+  const hanldeLogOut = () => {
+    userLogOut()
+      .then(() => {})
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   return (
     <header
@@ -70,13 +84,20 @@ const Header = () => {
               <FaSun className="text-gray-900 transition" />
             )}
           </button>
-          {user?.displayName ? (
+          {user?.uid ? (
             <>
               <span className={theme ? "text-white" : "text-gray-900"}>
-                {user?.displayName}
+                <img
+                  alt=""
+                  className="w-8 h-8 rounded-full ring-1 ring-offset-1 cursor-pointer dark:bg-gray-500 ring-violet-400 ring-offset-gray-800"
+                  src={user.photoURL}
+                />
               </span>
-              <button className={theme ? "text-white" : "text-gray-900"}>
-                <FaSignInAlt className="ml-6" />
+              <button
+                onClick={hanldeLogOut}
+                className={theme ? "text-white" : "text-gray-900"}
+              >
+                <FaSignOutAlt className="ml-6" />
               </button>
             </>
           ) : (

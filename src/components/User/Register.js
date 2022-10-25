@@ -20,14 +20,13 @@ const Register = () => {
         const user = result.user;
         console.log(user);
         navigate("/login");
-
         Swal.fire("Account Register Success!!", "Please Login");
       })
       .catch((error) => {
         console.error(error);
       });
 
-    console.log(email, name, photoURL, password);
+    console.log(email, password);
   };
 
   return (
@@ -60,6 +59,7 @@ const Register = () => {
             id="photoURL"
             placeholder="photoURL"
             className="w-full px-4 py-3 border border-blue-100 rounded-md focus:outline-none focus:shadow-md focus:bg-blue-50"
+            required
           />
         </div>
         <div className="space-y-1 text-sm">
