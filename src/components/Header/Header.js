@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaGraduationCap, FaMoon, FaSignInAlt, FaSun } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Header = () => {
   const [theme, setTheme] = useState(false);
+
+  const { user } = useContext(AuthContext);
 
   return (
     <header
@@ -62,19 +65,32 @@ const Header = () => {
         <div className="items-center flex-shrink-0 hidden lg:flex">
           <button className="mr-10 text-xl" onClick={() => setTheme(!theme)}>
             {theme ? (
-              <FaMoon className="text-gray-100" />
+              <FaMoon className="text-gray-100 transition" />
             ) : (
-              <FaSun className="text-gray-900" />
+              <FaSun className="text-gray-900 transition" />
             )}
           </button>
-          <Link to="/login">
-            <button
-              className={`self-center text-lg flex items-center px-4 py-2 
+          {user?.displayName ? (
+            <>
+              <span className={theme ? "text-white" : "text-gray-900"}>
+                {user?.displayName}
+              </span>
+              <button className={theme ? "text-white" : "text-gray-900"}>
+                <FaSignInAlt className="ml-6" />
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login">
+                <button
+                  className={`self-center text-lg flex items-center px-4 py-2 
          text-blue-500 rounded bg-white border`}
-            >
-              Log in <FaSignInAlt className="ml-2" />
-            </button>
-          </Link>
+                >
+                  Log in <FaSignInAlt className="ml-2" />
+                </button>
+              </Link>
+            </>
+          )}
         </div>
         <button className="p-4 lg:hidden">
           <svg
