@@ -4,7 +4,8 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
-  const { registerAccount, googleSignIn } = useContext(AuthContext);
+  const { registerAccount, googleSignIn, githubLogin } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
@@ -33,6 +34,18 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);
@@ -131,7 +144,11 @@ const Register = () => {
           </svg>
         </button>
 
-        <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+        <button
+          onClick={handleGithubLogin}
+          aria-label="Log in with GitHub"
+          className="p-3 rounded-sm"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"

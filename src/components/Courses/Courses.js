@@ -7,7 +7,7 @@ import Course from "./Course";
 const Courses = () => {
   const courses = useLoaderData();
   return (
-    <div className="px-12 mx-auto container py-10">
+    <div className="px-12 mx-auto container py-10 flex flex-col-reverse">
       <div className="course-container">
         <div className="">
           <Categories />

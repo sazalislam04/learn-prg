@@ -4,9 +4,9 @@ import student from "../../assets/student.png";
 
 const Home = () => {
   return (
-    <div className="banner min-h-screen">
-      <div className="container flex flex-col justify-center  mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
-        <div className="flex flex-col px-12 justify-center text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+    <div className="banner p-8 lg:p-0">
+      <div className="container flex flex-col  justify-center  mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+        <div className="flex flex-col px-5 lg:px-12 justify-center text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
           <h1 className="text-4xl text-white font-bold leading-9 sm:text-6xl">
             Learn New Skills Online With Top
             <span className="text-blue-500"> Edu-SkillUP</span>
@@ -33,11 +33,7 @@ const Home = () => {
           </div>
         </div>
         <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
-          <img
-            src={student}
-            alt=""
-            className="object-contain h-72 sm:h-80 lg:h-[600px] xl:h-112 2xl:h-128"
-          />
+          <img src={student} alt="" className="object-contain" />
         </div>
       </div>
     </div>

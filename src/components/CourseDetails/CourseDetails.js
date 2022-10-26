@@ -15,6 +15,7 @@ const CourseDetails = () => {
   const course = useLoaderData();
 
   const {
+    _id,
     details,
     rating,
     duration,
@@ -26,8 +27,6 @@ const CourseDetails = () => {
     image_url,
     quiz,
   } = course;
-
-  const { name, designation, courses, in_title, photo } = instructor;
 
   return (
     <div className=" py-10">
@@ -64,27 +63,27 @@ const CourseDetails = () => {
               <h3 className="flex items-center space-x-2">
                 <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full bg-blue-500"></span>
                 <span className="text-xs font-bold text-gray-800 tracking-wider uppercase">
-                  {designation}
+                  {instructor.designation}
                 </span>
               </h3>
               <div className="pt-5">
                 <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
                   <img
-                    src={photo}
+                    src={instructor.photo}
                     alt=""
                     className="self-center flex-shrink-0 w-20 h-20 rounded md:justify-self-start"
                   />
                   <div className="flex flex-col">
                     <h4 className="text-lg font-semibold text-center md:text-left">
-                      {name}
+                      {instructor.name}
                     </h4>
-                    <p className="text-sm">{in_title}</p>
+                    <p className="text-sm">{instructor.in_title}</p>
                     <span className="flex gap-6 mt-1">
                       <small className="flex items-center">
                         <span className="text-blue-500 mr-1">
                           <FaBook />
                         </span>{" "}
-                        {courses}
+                        {instructor.courses}
                       </small>
                       <small className="flex items-center gap-1">
                         <small>
@@ -195,7 +194,7 @@ const CourseDetails = () => {
                 </p>
               </div>
               <div className="mt-6">
-                <Link to="/premium">
+                <Link to={`/course/${_id}`}>
                   <button className="flex gap-2 items-center bg-red-500 py-2 rounded text-white w-full ">
                     <span className="text-center w-full">
                       Get premium access

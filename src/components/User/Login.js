@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-  const { userLogin, googleSignIn } = useContext(AuthContext);
+  const { userLogin, googleSignIn, githubLogin } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +18,8 @@ const Login = () => {
     userLogin(email, password)
       .then((result) => {
         Swal.fire("Login Success!");
+        navigate(from, { replace: true });
+        form.reset();
       })
       .catch((error) => {
         console.error(error);
@@ -27,10 +32,20 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -99,7 +114,11 @@ const Login = () => {
           </svg>
         </button>
 
-        <button aria-label="Log in with GitHub" className="p-3 rounded-sm">
+        <button
+          onClick={handleGithubLogin}
+          aria-label="Log in with GitHub"
+          className="p-3 rounded-sm"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"

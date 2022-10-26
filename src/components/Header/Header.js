@@ -99,6 +99,7 @@ const Header = () => {
             <>
               <span className={theme ? "text-white" : "text-gray-900"}>
                 <img
+                  title={user?.displayName}
                   alt=""
                   className="w-8 h-8 rounded-full ring-1 ring-offset-1 cursor-pointer bg-gray-500 ring-violet-400 ring-offset-gray-800"
                   src={user.photoURL}
