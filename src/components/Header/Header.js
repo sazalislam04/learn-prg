@@ -24,7 +24,9 @@ const Header = () => {
 
   return (
     <header
-      className={`py-2 shadow-md  ${theme ? "bg-gray-900 " : "bg-white"}`}
+      className={`py-2 shadow-md sticky top-0 z-10 ${
+        theme ? "bg-gray-100 " : "bg-gray-900"
+      }`}
     >
       <div className="container flex justify-between h-16 mx-auto px-12">
         <Link
@@ -36,7 +38,7 @@ const Header = () => {
           <FaGraduationCap className="w-12 h-12 text-blue-500" />
           <span
             className={`text-2xl ml-1 ${
-              theme ? "text-white" : "text-gray-800"
+              theme ? "text-gray-800" : "text-gray-100"
             }`}
           >
             edu<span className="text-blue-500 font-semibold">-Skillup</span>
@@ -44,13 +46,22 @@ const Header = () => {
         </Link>
         <ul
           className={`items-stretch hidden space-x-3 font-medium lg:flex ${
-            theme ? "text-white" : "text-gray-800"
+            theme ? "text-gray-800" : "text-gray-100"
           }`}
         >
           <li className="flex">
             <Link
               rel="noopener noreferrer"
               to="/"
+              className="flex items-center px-4 "
+            >
+              Home
+            </Link>
+          </li>
+          <li className="flex">
+            <Link
+              rel="noopener noreferrer"
+              to="/courses"
               className="flex items-center px-4 "
             >
               Courses
@@ -79,9 +90,9 @@ const Header = () => {
         <div className="items-center flex-shrink-0 hidden lg:flex">
           <button className="mr-10 text-xl" onClick={() => setTheme(!theme)}>
             {theme ? (
-              <FaMoon className="text-gray-100 transition" />
-            ) : (
               <FaSun className="text-gray-900 transition" />
+            ) : (
+              <FaMoon className="text-gray-100 transition" />
             )}
           </button>
           {user?.uid ? (

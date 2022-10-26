@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-  const { userLogin } = useContext(AuthContext);
+  const { userLogin, googleSignIn } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +20,17 @@ const Login = () => {
         console.error(error);
       });
     console.log(email, password);
+  };
+
+  const handleGoogleLogin = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
@@ -74,7 +85,11 @@ const Login = () => {
         <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
       </div>
       <div className="flex justify-center space-x-4">
-        <button aria-label="Log in with Google" className="p-3 rounded-sm">
+        <button
+          onClick={handleGoogleLogin}
+          aria-label="Log in with Google"
+          className="p-3 rounded-sm"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
