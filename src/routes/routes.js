@@ -57,10 +57,10 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/instructor/${params.id}`),
       },
       {
-        path: "/course/:id",
+        path: "/checkout/:id",
         element: <CheckOut />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(`http://localhost:5000/checkout/${params.id}`),
       },
     ],
   },

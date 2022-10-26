@@ -18,7 +18,7 @@ const Course = ({ course }) => {
     <div className="flex flex-col w-full p-6 lg:h-[500px] space-y-6 overflow-hidden rounded-lg custom-shadow bg-gray-100 lg:relative">
       <div className="flex space-x-4">
         <img
-          src={instructor.photo}
+          src={instructor?.photo}
           className="object-cover w-12 h-12 rounded-full shadow bg-gray-500"
           alt=""
         />
@@ -28,9 +28,9 @@ const Course = ({ course }) => {
             to=""
             className="text-sm font-semibold"
           >
-            {instructor.name}
+            {instructor?.name}
           </Link>
-          <span className="text-xs ">{instructor.designation}</span>
+          <span className="text-xs ">{instructor?.designation}</span>
         </div>
       </div>
       <div>

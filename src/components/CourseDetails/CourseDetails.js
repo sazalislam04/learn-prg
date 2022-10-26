@@ -15,6 +15,7 @@ const CourseDetails = () => {
   const course = useLoaderData();
 
   const {
+    checkout_id,
     _id,
     details,
     rating,
@@ -50,7 +51,7 @@ const CourseDetails = () => {
                   What you'll learn
                 </span>
               </h3>
-              {details.map((detail, index) => {
+              {details?.map((detail, index) => {
                 return (
                   <ul className="flex items-center" key={index}>
                     <FaCheck className="mr-2 text-gray-600 text-sm" />{" "}
@@ -63,34 +64,34 @@ const CourseDetails = () => {
               <h3 className="flex items-center space-x-2">
                 <span className="flex-shrink-0 w-2 h-2 uppercase rounded-full bg-blue-500"></span>
                 <span className="text-xs font-bold text-gray-800 tracking-wider uppercase">
-                  {instructor.designation}
+                  {instructor?.designation}
                 </span>
               </h3>
               <div className="pt-5">
                 <div className="flex space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
                   <img
-                    src={instructor.photo}
+                    src={instructor?.photo}
                     alt=""
                     className="self-center flex-shrink-0 w-20 h-20 rounded md:justify-self-start"
                   />
                   <div className="flex flex-col">
                     <h4 className="text-lg font-semibold text-center md:text-left">
-                      {instructor.name}
+                      {instructor?.name}
                     </h4>
                     <div className="ml-5 md:ml-0">
-                      <p className="text-sm">{instructor.in_title}</p>
+                      <p className="text-sm">{instructor?.in_title}</p>
                       <span className="flex gap-6 mt-1">
                         <small className="flex items-center">
                           <span className="text-blue-500 mr-1">
                             <FaBook />
                           </span>{" "}
-                          {instructor.courses}
+                          {instructor?.courses}
                         </small>
                         <small className="flex items-center gap-1">
                           <small>
                             <FaStar className="text-orange-500" />
                           </small>
-                          {rating.number}
+                          {rating?.number}
                         </small>
                       </span>
                     </div>
@@ -134,7 +135,7 @@ const CourseDetails = () => {
                     >
                       <path d="M494,198.671a40.536,40.536,0,0,0-32.174-27.592L345.917,152.242,292.185,47.828a40.7,40.7,0,0,0-72.37,0L166.083,152.242,50.176,171.079a40.7,40.7,0,0,0-22.364,68.827l82.7,83.368-17.9,116.055a40.672,40.672,0,0,0,58.548,42.538L256,428.977l104.843,52.89a40.69,40.69,0,0,0,58.548-42.538l-17.9-116.055,82.7-83.368A40.538,40.538,0,0,0,494,198.671Zm-32.53,18.7L367.4,312.2l20.364,132.01a8.671,8.671,0,0,1-12.509,9.088L256,393.136,136.744,453.3a8.671,8.671,0,0,1-12.509-9.088L144.6,312.2,50.531,217.37a8.7,8.7,0,0,1,4.778-14.706L187.15,181.238,248.269,62.471a8.694,8.694,0,0,1,15.462,0L324.85,181.238l131.841,21.426A8.7,8.7,0,0,1,461.469,217.37Z"></path>
                     </svg>
-                    <span className="text-xl font-bold">{rating.number}</span>
+                    <span className="text-xl font-bold">{rating?.number}</span>
                   </div>
                 </div>
                 <div className="p-4 space-y-2 text-sm text-gray-600">
@@ -196,7 +197,7 @@ const CourseDetails = () => {
                 </p>
               </div>
               <div className="mt-6">
-                <Link to={`/course/${_id}`}>
+                <Link to={`/checkout/${_id}`}>
                   <button className="flex gap-2 items-center bg-red-500 py-2 rounded text-white w-full ">
                     <span className="text-center w-full">
                       Get premium access
