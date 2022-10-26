@@ -89,7 +89,7 @@ const Header = () => {
               <span className={theme ? "text-white" : "text-gray-900"}>
                 <img
                   alt=""
-                  className="w-8 h-8 rounded-full ring-1 ring-offset-1 cursor-pointer dark:bg-gray-500 ring-violet-400 ring-offset-gray-800"
+                  className="w-8 h-8 rounded-full ring-1 ring-offset-1 cursor-pointer bg-gray-500 ring-violet-400 ring-offset-gray-800"
                   src={user.photoURL}
                 />
               </span>
@@ -119,7 +119,7 @@ const Header = () => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            className="w-6 h-6 dark:text-gray-100"
+            className="w-6 h-6 text-gray-100"
           >
             <path
               strokeLinecap="round"

@@ -54,7 +54,7 @@ const Login = () => {
             className="w-full px-4 py-3 border border-blue-100 rounded-md focus:outline-none focus:shadow-md focus:bg-blue-50 "
             required
           />
-          <div className="flex justify-end text-xs dark:text-gray-400">
+          <div className="flex justify-end text-xs text-gray-400">
             <Link
               rel="noopener noreferrer"
               className="mt-1 text-gray-500"
@@ -71,7 +71,7 @@ const Login = () => {
       <div className="flex items-center pt-4 space-x-1">
         <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
         <p className="px-3 text-sm text-gray-500">Login with social accounts</p>
-        <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
+        <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
       </div>
       <div className="flex justify-center space-x-4">
         <button aria-label="Log in with Google" className="p-3 rounded-sm">
