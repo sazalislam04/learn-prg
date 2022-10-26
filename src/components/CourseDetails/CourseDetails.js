@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  FaArrowRight,
   FaBook,
   FaBookOpen,
   FaCheck,
@@ -52,11 +53,9 @@ const CourseDetails = () => {
               </h3>
               {details.map((detail, index) => {
                 return (
-                  <ul className="flex items-center">
+                  <ul className="flex items-center" key={index}>
                     <FaCheck className="mr-2 text-gray-600 text-sm" />{" "}
-                    <li className="text-gray-700" key={index}>
-                      {detail}
-                    </li>
+                    <li className="text-gray-700">{detail}</li>
                   </ul>
                 );
               })}
@@ -150,6 +149,20 @@ const CourseDetails = () => {
                     rutrum sem.
                   </p>
                 </div>
+              </div>
+              <div className="pt-8">
+                <Link
+                  rel="noopener noreferrer"
+                  to="/courses"
+                  className="flex items-center text-red-500 gap-2"
+                >
+                  <span className="text-xs font-bold tracking-wider uppercase">
+                    Back to Course
+                  </span>
+                  <small>
+                    <FaArrowRight />
+                  </small>
+                </Link>
               </div>
             </div>
           </div>

@@ -106,7 +106,7 @@ const Header = () => {
               </span>
               <button
                 onClick={hanldeLogOut}
-                className={theme ? "text-white" : "text-gray-900"}
+                className={theme ? "text-gray-900" : "text-white"}
               >
                 <FaSignOutAlt className="ml-6" />
               </button>
