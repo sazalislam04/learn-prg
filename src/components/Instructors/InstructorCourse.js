@@ -14,6 +14,7 @@ const InstructorCourse = () => {
           <Instructors />
         </div>
         <div className="">
+          <h1 className="text-lg mb-3">{courses.length} Courses Found</h1>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {courses.map((course) => (
               <Course key={course._id} course={course} />

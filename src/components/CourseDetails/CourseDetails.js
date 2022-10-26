@@ -30,8 +30,8 @@ const CourseDetails = () => {
 
   return (
     <div className=" py-10">
-      <div className="px-12 container flex justify-between mx-auto gap-y-6 md:gap-10">
-        <div className="flex flex-col w-9/12  justify-between col-span-12 py-2 space-y-8 md:space-y-16 md:col-span-3">
+      <div className="px-6 lg:px-12 container md:flex justify-between mx-auto gap-y-6 md:gap-10">
+        <div className="flex flex-col lg:w-9/12 w-full justify-between col-span-12 py-2 space-y-8 md:space-y-16 md:col-span-3">
           <div className="flex flex-col space-y-8 md:space-y-12">
             <h2 className="text-3xl font-semibold">{title}</h2>
             <div>
@@ -67,7 +67,7 @@ const CourseDetails = () => {
                 </span>
               </h3>
               <div className="pt-5">
-                <div className="flex flex-col space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
+                <div className="flex space-y-4 md:space-y-0 md:space-x-6 md:flex-row">
                   <img
                     src={instructor.photo}
                     alt=""
@@ -77,21 +77,23 @@ const CourseDetails = () => {
                     <h4 className="text-lg font-semibold text-center md:text-left">
                       {instructor.name}
                     </h4>
-                    <p className="text-sm">{instructor.in_title}</p>
-                    <span className="flex gap-6 mt-1">
-                      <small className="flex items-center">
-                        <span className="text-blue-500 mr-1">
-                          <FaBook />
-                        </span>{" "}
-                        {instructor.courses}
-                      </small>
-                      <small className="flex items-center gap-1">
-                        <small>
-                          <FaStar className="text-orange-500" />
+                    <div className="ml-5 md:ml-0">
+                      <p className="text-sm">{instructor.in_title}</p>
+                      <span className="flex gap-6 mt-1">
+                        <small className="flex items-center">
+                          <span className="text-blue-500 mr-1">
+                            <FaBook />
+                          </span>{" "}
+                          {instructor.courses}
                         </small>
-                        {rating.number}
-                      </small>
-                    </span>
+                        <small className="flex items-center gap-1">
+                          <small>
+                            <FaStar className="text-orange-500" />
+                          </small>
+                          {rating.number}
+                        </small>
+                      </span>
+                    </div>
                   </div>
                 </div>
                 <p className="text-sm mt-3 text-gray-700">
@@ -166,9 +168,9 @@ const CourseDetails = () => {
             </div>
           </div>
         </div>
-        <div className="sticky top-20 rounded h-[550px]">
+        <div className="sticky top-20 rounded h-[550px] mt-5 lg:mt-0">
           <div className="">
-            <img src={image_url} className="rounded" alt="" />
+            <img src={image_url} className="rounded w-full mx-auto" alt="" />
             <span className="absolute px-1 pb-2 text-xs font-bold uppercase border-b-2 left-6 top-6 border-red-400 text-white">
               <span className="flex items-center">
                 <span className="mr-1 text-2xl text-blue-500">

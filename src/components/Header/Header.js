@@ -11,6 +11,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 
 const Header = () => {
   const [theme, setTheme] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const { user, userLogOut } = useContext(AuthContext);
 
@@ -28,7 +29,7 @@ const Header = () => {
         theme ? "bg-gray-100 " : "bg-gray-900"
       }`}
     >
-      <div className="container flex justify-between h-16 mx-auto px-12">
+      <div className="container flex justify-between h-16 mx-auto px-6 lg:px-12">
         <Link
           rel="noopener noreferrer"
           to="/"
@@ -125,23 +126,60 @@ const Header = () => {
             </>
           )}
         </div>
-        <button className="p-4 lg:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-6 h-6 text-gray-100"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
+
+        <button onClick={() => setOpen(!open)} className="p-4 lg:hidden">
+          {open ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="w-6 h-6 text-red-500"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6 text-gray-100"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              ></path>
+            </svg>
+          )}
         </button>
       </div>
+
+      {open && (
+        <nav className="text-gray-100 text-center">
+          <ul className="p-2 text-xl">
+            <li className="p-5">
+              <Link to="/">Home</Link>
+            </li>
+            <li className="p-5">
+              <Link to="/courses">Courses</Link>
+            </li>
+            <li className="p-5">
+              <Link to="/faq">Faq</Link>
+            </li>
+            <li className="p-5">
+              <Link to="/blog">Blog</Link>
+            </li>
+          </ul>
+        </nav>
+      )}
     </header>
   );
 };

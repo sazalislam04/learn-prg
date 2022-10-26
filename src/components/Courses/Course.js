@@ -15,7 +15,7 @@ const Course = ({ course }) => {
   } = course;
 
   return (
-    <div className="flex flex-col max-w-lg p-6 h-[500px] space-y-6 overflow-hidden rounded-lg custom-shadow bg-gray-100 relative">
+    <div className="flex flex-col w-full p-6 lg:h-[500px] space-y-6 overflow-hidden rounded-lg custom-shadow bg-gray-100 lg:relative">
       <div className="flex space-x-4">
         <img
           src={instructor.photo}
@@ -53,11 +53,11 @@ const Course = ({ course }) => {
           </span>
         </p>
       </div>
-      <div className="flex justify-between flex-wrap items-center absolute bottom-5 w-full right-0 px-6">
+      <div className="flex justify-between flex-wrap items-center lg:absolute lg:bottom-5 w-full right-0 px-2 lg:px-6">
         <div className="text-xl">Price: {price}$</div>
         <div className="text-sm text-gray-400">
           <Link to={`/course/${_id}`}>
-            <button className="px-4 py-2 bg-blue-500 text-white rounded">
+            <button className="px-4 py-2 mt-2 md:mt-0 bg-blue-500 text-white rounded">
               Show Detail
             </button>
           </Link>
