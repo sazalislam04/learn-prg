@@ -9,8 +9,10 @@ const CheckOut = () => {
   const { title, price, lessons, duration } = course;
 
   const handleSubmit = (e) => {
+    const form = e.target.value;
     e.preventDefault();
     Swal.fire("Cehckout Success!");
+    form.reset("");
   };
 
   return (
@@ -38,7 +40,7 @@ const CheckOut = () => {
           </div>
           <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
             <div className="col-span-full sm:col-span-3">
-              <label for="firstname" className="text-sm">
+              <label htmlFor="firstname" className="text-sm">
                 First name
               </label>
               <input
@@ -47,10 +49,11 @@ const CheckOut = () => {
                 type="text"
                 placeholder="First name"
                 className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-300 border focus:outline-none border-blue-300 p-2"
+                required
               />
             </div>
             <div className="col-span-full sm:col-span-3">
-              <label for="lastname" className="text-sm">
+              <label htmlFor="lastname" className="text-sm">
                 Last name
               </label>
               <input
@@ -59,11 +62,12 @@ const CheckOut = () => {
                 type="text"
                 placeholder="Last name"
                 className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-300 border focus:outline-none border-blue-300 p-2 "
+                required
               />
             </div>
 
             <div className="col-span-full">
-              <label for="email" className="text-sm">
+              <label htmlFor="email" className="text-sm">
                 Email Address
               </label>
               <input
@@ -72,10 +76,11 @@ const CheckOut = () => {
                 type="email"
                 placeholder="email"
                 className="w-full rounded-md focus:ring focus:ring-opacity-75 focus:ring-blue-300 border focus:outline-none border-blue-300 p-2 "
+                required
               />
             </div>
             <div className="col-span-full sm:col-span-2">
-              <label for="city" className="text-sm">
+              <label htmlFor="city" className="text-sm">
                 City
               </label>
               <input
@@ -86,7 +91,7 @@ const CheckOut = () => {
               />
             </div>
             <div className="col-span-full sm:col-span-2">
-              <label for="state" className="text-sm">
+              <label htmlFor="state" className="text-sm">
                 State / Province
               </label>
               <input
@@ -97,7 +102,7 @@ const CheckOut = () => {
               />
             </div>
             <div className="col-span-full sm:col-span-2">
-              <label for="zip" className="text-sm">
+              <label htmlFor="zip" className="text-sm">
                 ZIP / Postal
               </label>
               <input

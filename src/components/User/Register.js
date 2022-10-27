@@ -1,12 +1,20 @@
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
-  const { registerAccount, googleSignIn, githubLogin } =
-    useContext(AuthContext);
+  const {
+    registerAccount,
+    googleSignIn,
+    githubLogin,
+    updateUserProfile,
+    verifactionEmail,
+  } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -16,27 +24,42 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    if (!/(?=.*?[A-Z])/.test(password)) {
+      setError("Password Should be one Capital letter");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password Should be at least Six Character");
+      return;
+    }
+
     registerAccount(email, password)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
         navigate("/login");
         Swal.fire("Account Register Success!!", "Please Login");
+        form.reset();
+        setError("");
+        handleUpdateProfile(name, photoURL);
+        emailVerified();
+        Swal.fire(
+          "Email verification link has been send. Please check your email address!"
+        );
       })
       .catch((error) => {
         console.error(error);
+        setError(error.message);
       });
 
-    console.log(email, password);
+    console.log(email, password, name, photoURL);
   };
   const handleGoogleLogin = () => {
     googleSignIn()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.error(error);
+        setError(error.message);
       });
   };
 
@@ -45,11 +68,27 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.error(error);
+        setError(error.message);
       });
+  };
+
+  const handleUpdateProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => setError(error.message));
+  };
+
+  const emailVerified = () => {
+    verifactionEmail()
+      .then(() => {})
+      .catch((error) => setError(error.message));
   };
 
   return (
@@ -66,10 +105,8 @@ const Register = () => {
           <input
             type="text"
             name="name"
-            id="name"
             placeholder="name"
             className="w-full px-4 py-3 border border-blue-100 rounded-md focus:outline-none focus:shadow-md focus:bg-blue-50"
-            required
           />
         </div>
         <div className="space-y-1 text-sm">
@@ -79,7 +116,6 @@ const Register = () => {
           <input
             type="text"
             name="photoURL"
-            id="photoURL"
             placeholder="photoURL"
             className="w-full px-4 py-3 border border-blue-100 rounded-md focus:outline-none focus:shadow-md focus:bg-blue-50"
             required
@@ -92,7 +128,6 @@ const Register = () => {
           <input
             type="email"
             name="email"
-            id="email"
             placeholder="email"
             className="w-full px-4 py-3 border border-blue-100 rounded-md focus:outline-none focus:shadow-md focus:bg-blue-50"
             required
@@ -105,11 +140,11 @@ const Register = () => {
           <input
             type="password"
             name="password"
-            id="password"
             placeholder="Password"
             className="w-full px-4 py-3 border border-blue-100 rounded-md focus:outline-none focus:shadow-md focus:bg-blue-50 "
             required
           />
+          <p className="text-red-500">{error ? error : ""}</p>
           <div className="flex justify-end text-xs text-gray-400">
             <Link
               rel="noopener noreferrer"

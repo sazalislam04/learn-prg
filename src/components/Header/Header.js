@@ -6,7 +6,7 @@ import {
   FaSignOutAlt,
   FaSun,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Header = () => {
@@ -42,49 +42,54 @@ const Header = () => {
               theme ? "text-gray-800" : "text-gray-100"
             }`}
           >
-            edu<span className="text-blue-500 font-semibold">-Skillup</span>
+            LEARN<span className="text-blue-500 font-semibold">PRg</span>
           </span>
         </Link>
         <ul
           className={`items-stretch hidden space-x-3 font-medium lg:flex ${
-            theme ? "text-gray-800" : "text-gray-100"
+            theme ? "text-gray-900" : "text-gray-100"
           }`}
         >
           <li className="flex">
-            <Link
+            <NavLink
               rel="noopener noreferrer"
               to="/"
-              className="flex items-center px-4 "
+              className={`flex items-center px-4 ${({ isActive }) =>
+                isActive ? "active" : undefined}`}
+              end
             >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li className="flex">
-            <Link
+            <NavLink
               rel="noopener noreferrer"
               to="/courses"
-              className="flex items-center px-4 "
+              className={`flex items-center px-4 ${({ isActive }) =>
+                isActive ? "active" : undefined}`}
             >
               Courses
-            </Link>
+            </NavLink>
           </li>
           <li className="flex">
-            <Link
+            <NavLink
               rel="noopener noreferrer"
               to="/faq"
-              className="flex items-center px-4 "
+              className={`flex items-center px-4 ${({ isActive }) =>
+                isActive ? "active" : undefined}`}
             >
               FAQ
-            </Link>
+            </NavLink>
           </li>
           <li className="flex">
-            <Link
+            <NavLink
               rel="noopener noreferrer"
               to="/blog"
-              className="flex items-center px-4"
+              className={`flex items-center px-4 ${({ isActive }) =>
+                isActive ? "active" : undefined}`}
             >
               Blog
-            </Link>
+            </NavLink>
           </li>
         </ul>
 
@@ -96,34 +101,38 @@ const Header = () => {
               <FaMoon className="text-gray-100 transition" />
             )}
           </button>
+
+          {user?.photoURL && (
+            <div className="relative flex-shrink-0 mr-6">
+              <span className="absolute bottom-0 right-0 w-4 h-4 bg-blue-600 border rounded-full text-gray-100 border-gray-900"></span>
+              <img
+                title={user?.displayName}
+                src={user?.photoURL}
+                alt=""
+                className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700 cursor-pointer"
+              />
+            </div>
+          )}
+
           {user?.uid ? (
             <>
-              <span className={theme ? "text-white" : "text-gray-900"}>
-                <img
-                  title={user?.displayName}
-                  alt=""
-                  className="w-8 h-8 rounded-full ring-1 ring-offset-1 cursor-pointer bg-gray-500 ring-violet-400 ring-offset-gray-800"
-                  src={user.photoURL}
-                />
-              </span>
               <button
+                title="Log Out"
                 onClick={hanldeLogOut}
                 className={theme ? "text-gray-900" : "text-white"}
               >
-                <FaSignOutAlt className="ml-6" />
+                <FaSignOutAlt className="ml-3 text-2xl" />
               </button>
             </>
           ) : (
-            <>
-              <Link to="/login">
-                <button
-                  className={`self-center text-lg flex items-center px-4 py-2 
+            <Link to="/login">
+              <button
+                className={`self-center text-lg flex items-center px-4 py-2 
          text-blue-500 rounded bg-white border`}
-                >
-                  Log in <FaSignInAlt className="ml-2" />
-                </button>
-              </Link>
-            </>
+              >
+                Log in <FaSignInAlt className="ml-2" />
+              </button>
+            </Link>
           )}
         </div>
 

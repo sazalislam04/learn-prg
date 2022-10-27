@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-  const { userLogin, googleSignIn, githubLogin } = useContext(AuthContext);
+  const { userLogin, googleSignIn, githubLogin, setLoading } =
+    useContext(AuthContext);
+  const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -19,10 +21,15 @@ const Login = () => {
       .then((result) => {
         Swal.fire("Login Success!");
         navigate(from, { replace: true });
+
         form.reset();
+        setError("");
       })
       .catch((error) => {
-        console.error(error);
+        setError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
       });
     console.log(email, password);
   };
@@ -30,22 +37,19 @@ const Login = () => {
   const handleGoogleLogin = () => {
     googleSignIn()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
         navigate(from, { replace: true });
       })
       .catch((error) => {
-        console.error(error);
+        setError(error.message);
       });
   };
 
   const handleGithubLogin = () => {
     githubLogin()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        navigate(from, { replace: true });
       })
-      .catch((error) => console.error(error));
+      .catch((error) => setError(error.message));
   };
 
   return (
@@ -80,6 +84,7 @@ const Login = () => {
             className="w-full px-4 py-3 border border-blue-100 rounded-md focus:outline-none focus:shadow-md focus:bg-blue-50 "
             required
           />
+          <p className="text-red-500">{error}</p>
           <div className="flex justify-end text-xs text-gray-400">
             <Link
               rel="noopener noreferrer"
