@@ -33,7 +33,7 @@ const CourseDetails = () => {
   } = course;
 
   return (
-    <div className=" py-10">
+    <div className=" py-10" data-aos="zoom-in">
       <div>
         <Pdf targetRef={ref} filename="code-example.pdf">
           {({ toPdf }) => (

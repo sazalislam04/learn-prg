@@ -15,7 +15,10 @@ const Course = ({ course }) => {
   } = course;
 
   return (
-    <div className="flex flex-col w-full p-6 lg:h-[500px] space-y-6 overflow-hidden rounded-lg custom-shadow bg-gray-100 lg:relative">
+    <div
+      className="flex flex-col w-full p-6 lg:h-[500px] space-y-6 overflow-hidden rounded-lg custom-shadow bg-gray-100 lg:relative"
+      data-aos="zoom-in"
+    >
       <div className="flex space-x-4">
         <img
           src={instructor?.photo}

@@ -3,7 +3,7 @@ import React from "react";
 const Blog = () => {
   return (
     <div className="blog-container">
-      <div className="min-h-screen">
+      <div className="min-h-screen" data-aos="fade-down">
         <div className="container w-full px-6 py-12 mx-auto">
           <div className="grid gap-4 mx-4 sm:grid-cols-12">
             <div className="col-span-12 sm:col-span-3">

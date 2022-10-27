@@ -145,15 +145,6 @@ const Register = () => {
             required
           />
           <p className="text-red-500">{error ? error : ""}</p>
-          <div className="flex justify-end text-xs text-gray-400">
-            <Link
-              rel="noopener noreferrer"
-              className="mt-1 text-gray-500"
-              to="#"
-            >
-              Forgot Password?
-            </Link>
-          </div>
         </div>
         <button className="block w-full p-3 text-center rounded-sm text-gray-100 font-semibold bg-blue-500">
           Register

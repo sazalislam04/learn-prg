@@ -3,7 +3,12 @@ import React from "react";
 const FaQuestions = () => {
   return (
     <section className="bg-gray-800 text-gray-100 min-h-screen py-10">
-      <div className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8">
+      <div
+        className="container flex flex-col justify-center px-4 py-8 mx-auto md:p-8"
+        data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="2000"
+      >
         <h2 className="text-2xl font-semibold sm:text-4xl">
           Frequently Asked Questions
         </h2>
