@@ -21,7 +21,6 @@ const Login = () => {
       .then((result) => {
         Swal.fire("Login Success!");
         navigate(from, { replace: true });
-
         form.reset();
         setError("");
       })
@@ -31,12 +30,13 @@ const Login = () => {
       .finally(() => {
         setLoading(false);
       });
-    console.log(email, password);
   };
 
   const handleGoogleLogin = () => {
     googleSignIn()
       .then((result) => {
+        const user = result.user;
+        console.log(user);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -53,12 +53,12 @@ const Login = () => {
   };
 
   return (
-    <div className="w-full max-w-md p-8 space-y-3 rounded-xl  mx-auto mt-10 custom-shadow">
+    <div
+      className="w-full max-w-md p-8 space-y-3 rounded-xl  mx-auto mt-10 mb-10 custom-shadow"
+      data-aos="zoom-in"
+    >
       <h1 className="text-2xl font-bold text-center">Login</h1>
-      <form
-        onSubmit={handleSubmit}
-        className="space-y-6 ng-untouched ng-pristine ng-valid"
-      >
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div className="space-y-1 text-sm">
           <label htmlFor="email" className="block text-gray-900">
             Your Email
@@ -85,20 +85,14 @@ const Login = () => {
             required
           />
           <p className="text-red-500">{error}</p>
-          <div className="flex justify-end text-xs text-gray-400">
-            <Link
-              rel="noopener noreferrer"
-              className="mt-1 text-gray-500"
-              to="#"
-            >
-              Forgot Password?
-            </Link>
-          </div>
         </div>
         <button className="block w-full p-3 text-center rounded-sm text-gray-100 font-semibold bg-blue-500">
           Login
         </button>
       </form>
+      <div className="flex justify-end text-xs text-gray-400">
+        <button className="mt-1 text-gray-500">Forgot Password?</button>
+      </div>
       <div className="flex items-center pt-4 space-x-1">
         <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
         <p className="px-3 text-sm text-gray-500">Login with social accounts</p>

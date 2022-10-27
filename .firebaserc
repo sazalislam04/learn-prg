@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "edu-skillup"
-  }
+    "y": "learnprg-6d8ea",
+    "default": "learnprg-6d8ea"
+  },
+  "targets": {},
+  "etags": {}
 }

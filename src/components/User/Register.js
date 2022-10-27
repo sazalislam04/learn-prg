@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
@@ -37,21 +37,18 @@ const Register = () => {
     registerAccount(email, password)
       .then((result) => {
         navigate("/login");
-        Swal.fire("Account Register Success!!", "Please Login");
         form.reset();
         setError("");
         handleUpdateProfile(name, photoURL);
         emailVerified();
-        Swal.fire(
-          "Email verification link has been send. Please check your email address!"
+        toast.success(
+          "Email verification link has been send. Please check your email address!",
+          { duration: 1000 }
         );
       })
       .catch((error) => {
-        console.error(error);
         setError(error.message);
       });
-
-    console.log(email, password, name, photoURL);
   };
   const handleGoogleLogin = () => {
     googleSignIn()
@@ -66,8 +63,6 @@ const Register = () => {
   const handleGithubLogin = () => {
     githubLogin()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -92,12 +87,12 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full mb-6 max-w-md p-8 space-y-3 rounded-xl  mx-auto mt-10 custom-shadow">
+    <div
+      className="w-full max-w-md p-8 space-y-3 rounded-xl  mx-auto min-h-screen mt-10 mb-10 custom-shadow"
+      data-aos="zoom-in"
+    >
       <h1 className="text-2xl font-bold text-center">Register Account</h1>
-      <form
-        onSubmit={handleRegister}
-        className="space-y-6 ng-untouched ng-pristine ng-valid"
-      >
+      <form onSubmit={handleRegister} className="space-y-6">
         <div className="space-y-1 text-sm">
           <label htmlFor="name" className="block text-gray-900">
             Your Name
