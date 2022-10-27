@@ -33,5 +33,3 @@ In the project directory, you can run:
 ## `Live Link`
 
 Hosting by Firebase: [learnprg](https://learnprg-6d8ea.web.app/)
-
-## Learn More
