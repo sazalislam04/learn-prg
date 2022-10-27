@@ -26,19 +26,21 @@ export const router = createBrowserRouter([
       {
         path: "courses",
         element: <Courses />,
-        loader: () => fetch("http://localhost:5000/courses"),
+        loader: () => fetch("https://education-server-beta.vercel.app/courses"),
       },
       {
         path: "/category/:id",
         element: <CategoryCourse />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/category/${params.id}`),
+          fetch(
+            `https://education-server-beta.vercel.app/category/${params.id}`
+          ),
       },
       {
         path: "/course/:id",
         element: <CourseDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/course/${params.id}`),
+          fetch(`https://education-server-beta.vercel.app/course/${params.id}`),
       },
       {
         path: "/faq",
@@ -60,7 +62,9 @@ export const router = createBrowserRouter([
         path: "/instructor/:id",
         element: <InstructorCourse />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/instructor/${params.id}`),
+          fetch(
+            `https://education-server-beta.vercel.app/instructor/${params.id}`
+          ),
       },
       {
         path: "/checkout/:id",
@@ -70,7 +74,9 @@ export const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/checkout/${params.id}`),
+          fetch(
+            `https://education-server-beta.vercel.app/checkout/${params.id}`
+          ),
       },
     ],
   },
