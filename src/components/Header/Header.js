@@ -121,7 +121,7 @@ const Header = () => {
           )}
 
           {user?.uid ? (
-            <>
+            <div>
               <button
                 title="Log Out"
                 onClick={hanldeLogOut}
@@ -129,7 +129,7 @@ const Header = () => {
               >
                 <FaSignOutAlt className="ml-3 text-2xl" />
               </button>
-            </>
+            </div>
           ) : (
             <Link to="/login">
               <button
@@ -142,7 +142,7 @@ const Header = () => {
           )}
         </div>
 
-        <button onClick={() => setOpen(!open)} className="p-4 lg:hidden">
+        <button onClick={() => setOpen(!open)} className="lg:hidden">
           {open ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -176,10 +176,9 @@ const Header = () => {
           )}
         </button>
       </div>
-
       {open && (
         <>
-          <div className="h-full p-6 space-y-2 w-1/2 mx-auto bg-white shadow-lg lg:hidden ">
+          <div className="h-full p-6 space-y-2 w-full md:w-2/3 mx-auto  shadow-lg lg:hidden bg-gray-100 ">
             <div className="flex items-center p-2 space-x-4">
               {user?.photoURL && (
                 <>
@@ -266,65 +265,6 @@ const Header = () => {
             </div>
           </div>
         </>
-
-        // <nav className="text-gray-100 text-center">
-        //   <ul className="p-2 text-xl">
-        //     <li className="p-5">
-        //       <Link to="/">Home</Link>
-        //     </li>
-        //     <li className="p-5">
-        //       <Link to="/courses">Courses</Link>
-        //     </li>
-        //     <li className="p-5">
-        //       <Link to="/faq">Faq</Link>
-        //     </li>
-        //     <li className="p-5">
-        //       <Link to="/blog">Blog</Link>
-        //     </li>
-        //   </ul>
-        //   <div className="items-center flex-shrink-0 ">
-        //     <button className="mr-10 text-xl" onClick={() => setTheme(!theme)}>
-        //       {theme ? (
-        //         <FaSun className="text-gray-900 transition" />
-        //       ) : (
-        //         <FaMoon className="text-gray-100 transition" />
-        //       )}
-        //     </button>
-
-        //     {user?.photoURL && (
-        //       <div className="relative flex-shrink-0 mr-6">
-        //         <span className="absolute bottom-0 right-0 w-4 h-4 bg-blue-600 border rounded-full text-gray-100 border-gray-900"></span>
-        //         <img
-        //           title={user?.displayName}
-        //           src={user?.photoURL}
-        //           alt=""
-        //           className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700 cursor-pointer"
-        //         />
-        //       </div>
-        //     )}
-
-        //     {user?.uid ? (
-        //       <>
-        //         <button
-        //           title="Log Out"
-        //           onClick={hanldeLogOut}
-        //           className={theme ? "text-gray-900" : "text-white"}
-        //         >
-        //           <FaSignOutAlt className="ml-3 text-2xl" />
-        //         </button>
-        //       </>
-        //     ) : (
-        //       <Link to="/login">
-        //         <button
-        //           className={`self-center text-lg flex items-center px-4 py-2
-        //  text-blue-500 rounded bg-white border`}
-        //         >
-        //           Log in <FaSignInAlt className="ml-2" />
-        //         </button>
-        //       </Link>
-        //     )}
-        //   </div>
-        // </nav>
       )}
     </header>
   );

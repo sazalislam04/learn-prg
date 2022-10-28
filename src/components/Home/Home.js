@@ -9,8 +9,6 @@ const Home = () => {
         <div
           className="flex flex-col lg:px-12 justify-center text-center rounded-sm w-full lg:w-1/2 lg:text-left"
           data-aos="fade-right"
-          data-aos-anchor="#example-anchor"
-          data-aos-offset="500"
           data-aos-duration="500"
         >
           <h1 className="text-4xl text-white font-bold leading-9 sm:text-6xl">
@@ -38,14 +36,14 @@ const Home = () => {
             </Link>
           </div>
         </div>
-        <div
-          className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 scale-110 sm:h-80 lg:h-96 xl:h-112 2xl:h-128"
-          data-aos="fade-left"
-          data-aos-anchor="#example-anchor"
-          data-aos-offset="500"
-          data-aos-duration="500"
-        >
-          <img src={student} alt="" className="object-contain" />
+        <div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 scale-110 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+          <img
+            src={student}
+            alt=""
+            className="object-contain"
+            data-aos="fade-right"
+            data-aos-duration="1000"
+          />
         </div>
       </div>
     </div>

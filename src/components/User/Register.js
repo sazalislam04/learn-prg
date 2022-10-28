@@ -88,7 +88,7 @@ const Register = () => {
   };
 
   return (
-    <div className="lg:flex mx-auto justify-between container px-6 lg:px-12">
+    <div className="lg:flex mx-auto justify-between items-center container px-6 lg:px-12">
       <div
         className="p-8 space-y-3 rounded-xl mx-auto mt-10 mb-10 custom-shadow"
         data-aos="zoom-in"
@@ -195,7 +195,12 @@ const Register = () => {
         </p>
       </div>
       <div>
-        <img className="lg:mt-10" src={banner} alt="" />
+        <img
+          src={banner}
+          alt=""
+          data-aos="fade-left"
+          data-aos-duration="1000"
+        />
       </div>
     </div>
   );

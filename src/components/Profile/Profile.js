@@ -6,7 +6,10 @@ const Profile = () => {
   const { user } = useContext(AuthContext);
 
   return (
-    <div className="flex flex-col w-full mx-auto mt-40 mb-40 justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-gray-900 text-gray-100">
+    <div
+      className="flex flex-col w-full mx-auto mt-40 mb-40 justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 bg-gray-900 text-gray-100"
+      data-aos="zoom-in"
+    >
       {user?.uid ? (
         <img
           src={

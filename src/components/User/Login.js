@@ -66,9 +66,14 @@ const Login = () => {
   };
 
   return (
-    <div className="lg:flex mx-auto justify-between container px-6 lg:px-12">
+    <div className="lg:flex mx-auto justify-between items-center container px-6 lg:px-12">
       <div>
-        <img src={banner} className="lg:mt-10" alt="" />
+        <img
+          src={banner}
+          alt=""
+          data-aos="fade-right"
+          data-aos-duration="1000"
+        />
       </div>
       <div
         className="p-8 space-y-3 rounded-xl mx-auto mt-10 mb-10 custom-shadow"

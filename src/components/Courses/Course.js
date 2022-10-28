@@ -17,7 +17,8 @@ const Course = ({ course }) => {
   return (
     <div
       className="flex flex-col w-full p-6 lg:h-[500px] space-y-6 overflow-hidden rounded-lg custom-shadow bg-gray-100 lg:relative"
-      data-aos="zoom-in"
+      data-aos="fade-up"
+      data-aos-anchor-placement="top-bottom"
     >
       <div className="flex space-x-4">
         <img
