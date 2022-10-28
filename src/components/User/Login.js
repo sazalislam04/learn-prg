@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-  const { userLogin, googleSignIn, githubLogin, setLoading } =
+  const [resetEmail, setResetEmail] = useState("");
+  const { userLogin, googleSignIn, githubLogin, setLoading, resetPassword } =
     useContext(AuthContext);
   const [error, setError] = useState("");
   const location = useLocation();
@@ -52,6 +54,16 @@ const Login = () => {
       .catch((error) => setError(error.message));
   };
 
+  const handleResetPassword = () => {
+    resetPassword(resetEmail)
+      .then(() => {
+        toast.success("reset password email send");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
   return (
     <div
       className="w-full max-w-md p-8 space-y-3 rounded-xl  mx-auto mt-10 mb-10 custom-shadow"
@@ -64,6 +76,7 @@ const Login = () => {
             Your Email
           </label>
           <input
+            onBlur={(e) => setResetEmail(e.target.value)}
             type="email"
             name="email"
             id="email"
@@ -91,7 +104,9 @@ const Login = () => {
         </button>
       </form>
       <div className="flex justify-end text-xs text-gray-400">
-        <button className="mt-1 text-gray-500">Forgot Password?</button>
+        <button onClick={handleResetPassword} className="mt-1 text-gray-500">
+          Reset Password?
+        </button>
       </div>
       <div className="flex items-center pt-4 space-x-1">
         <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
