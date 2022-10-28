@@ -16,7 +16,7 @@ const CheckOut = () => {
   };
 
   return (
-    <div className="py-20 w-2/3 mx-auto ">
+    <div className="py-10 lg:py-20 w-full lg:w-2/3 mx-auto ">
       <form
         onSubmit={handleSubmit}
         className="container flex flex-col mx-auto space-y-12 ng-untouched ng-pristine ng-valid"

@@ -198,7 +198,7 @@ const Register = () => {
         <img
           src={banner}
           alt=""
-          data-aos="fade-left"
+          data-aos="fade-right"
           data-aos-duration="1000"
         />
       </div>
