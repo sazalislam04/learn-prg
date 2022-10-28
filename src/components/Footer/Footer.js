@@ -40,7 +40,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link rel="noopener noreferrer" href="/faq">
+                <Link rel="noopener noreferrer" to="/faq">
                   FAQ
                 </Link>
               </li>
