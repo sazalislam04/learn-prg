@@ -109,12 +109,14 @@ const Header = () => {
           {user?.photoURL && (
             <div className="relative flex-shrink-0 mr-6">
               <span className="absolute bottom-0 right-0 w-4 h-4 bg-blue-600 border rounded-full text-gray-100 border-gray-900"></span>
-              <img
-                title={user?.displayName}
-                src={user?.photoURL}
-                alt=""
-                className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700 cursor-pointer"
-              />
+              <Link to="/profile">
+                <img
+                  title={user?.displayName}
+                  src={user?.photoURL}
+                  alt=""
+                  className="w-12 h-12 border rounded-full dark:bg-gray-500 dark:border-gray-700 cursor-pointer"
+                />
+              </Link>
             </div>
           )}
 

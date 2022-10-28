@@ -8,6 +8,7 @@ import ErrorPage from "../components/ErrorPage/ErrorPage";
 import FaQuestions from "../components/FaQuestions/FaQuestions";
 import Home from "../components/Home/Home";
 import InstructorCourse from "../components/Instructors/InstructorCourse";
+import Profile from "../components/Profile/Profile";
 import Login from "../components/User/Login";
 import Register from "../components/User/Register";
 import Layout from "../Layout/Layout";
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
       {
         path: "/instructor/:id",
