@@ -1,35 +1,34 @@
-# learnprg online education & course
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# learnprg - online education & course center
 
 learnprg is a leading online education platform in english courses, tutorials, and training instructed by industry experts. It provides premium & free courses on Digital Marketing, Programming, Software Development, Web Design & Development, Graphic Design, Making Money Online, and more.
 
-## This Project Used to Available Scripts and framework
+## This Project is created by using
 
-## React Js,
+- React Js
+- React-router-dom
+- Tailwinds css
+- React-Hot-tost
+- React-icons
+- React AOS-animation
+- React sweetalert2
 
-## Firebase Authentication,
+## Features of project
 
-## React Router Dom v6.4,
-
-## Tailwind CSS.
-
-## React hot toast
-
-## React-icons
-
-## React sweetalert2
-
-## react-to-pdf
-
-## React AOS-animation
-
-In the project directory, you can run:
-
-## `npm run build`
-
-## `npm start`
+- Authentication with Firebase
+- Login & Register Available with Email/Password & Google/Github
+- Responsive Design
+- Dark & Light Mood
+- Available world most technology courses
+- Available Download with course details pdf
 
 ## `Live Link`
 
-Hosting by Firebase: [learnprg](https://learnprg-6d8ea.web.app/)
+Hosted by Firebase: [learnprg](https://learnprg-6d8ea.web.app/)
+
+## Installation
+
+```bash
+  clone git project
+  npm install
+  npm start
+```

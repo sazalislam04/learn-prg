@@ -200,7 +200,7 @@ const CourseDetails = () => {
                     <span className="mr-1 text-2xl text-blue-500">
                       <FaGraduationCap />
                     </span>{" "}
-                    edu-Skillup
+                    Learn<span className="text-blue-500">PRg</span>
                   </span>
                 </span>
                 <div className="p-5">
